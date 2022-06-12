@@ -1,0 +1,93 @@
+<mvc:View controllerName="as.activity.activityasayar.controller.Aktivite" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m" xmlns:semantic="sap.f.semantic" 	xmlns:core="sap.ui.core">
+    <semantic:SemanticPage
+    id="page"
+    headerPinnable="false"
+    toggleHeaderOnTitleClick="false"
+    showFooter="true">
+
+    <semantic:titleHeading>
+        <Title text="{i18n>activitylistTitle}"/>
+            
+    </semantic:titleHeading>
+
+    <semantic:headerContent>
+        <IconTabBar
+            id="iconTabBar"
+            select=".onQuickFilter"
+            expandable="false">
+            
+            <content>
+                <Table
+                    id="table"
+                    busyIndicatorDelay="{aktiviteModel>/tableBusyDelay}"
+                    growing="true"
+                    growingScrollToLoad="true"
+                    noDataText="{aktiviteModel>/tableNoDataText}"
+                    updateFinished=".onUpdateFinished"
+                    width="auto"
+                    mode="Delete"
+                    delete="onDelete"
+                    items="{aktiviteModel>/AktiviteList}">
+                <headerToolbar>
+                    <Toolbar>
+                        <Title
+                            id="tableHeader"
+                            text="{aktiviteModel>Activityid}"/>
+                        <ToolbarSpacer/>
+<!-- 
+                        <SearchField id="searchField" tooltip="{i18n>worklistSearchTooltip}" search=".onSearch" width="auto"></SearchField>
+-->                 
+<Label text="{aktiviteModel>/Activityid}"></Label>
+<Title text="{aktiviteModel>/Activityid}" />
+                    </Toolbar>
+                </headerToolbar>
+
+    <columns>
+        <Column id="nameColumn">
+            <Text id="nameColumnTitle" text="Activity Name" />
+        </Column>
+        <Column id="supplierNameColumn" demandPopin="false" minScreenWidth="Tablet">
+            <Text text="Activity Description" />
+        </Column>
+        <Column id="unitPriceColumn" hAlign="Begin" demandPopin="true" >
+            <Text text="Activity Id" />
+        </Column>
+        <Column id="unitsOnOrderColumn" demandPopin="true" minScreenWidth="Tablet" hAlign="Begin">
+            <Text text="Activity Time" />
+        </Column>
+        <Column id="unitsInStockColumn" hAlign="Begin">
+            <Text text="Activity Date" />
+        </Column>
+        <Column id="unitsInStockColumn1" hAlign="End">
+            <Text text="User ID" />
+        </Column>
+    </columns>
+                <items>
+                    <ColumnListItem
+                        type="Navigation"
+                        press=".onPressOpenActivityUpdateDialog">
+                        <cells>
+                            <ObjectIdentifier
+                                title="{aktiviteModel>Activityname}"/>
+                            <Text text="{aktiviteModel>Activitydescription}"/>
+                            <Label  text = "{aktiviteModel>Activityid}" ></Label>
+                            <Label  text = "{aktiviteModel>Activitytime}" ></Label>
+                            <Label  text = "{aktiviteModel>Activitydate}" ></Label>
+                            <Label  text = "{aktiviteModel>Userid}" ></Label>
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table>
+            </content>
+        </IconTabBar>
+    </semantic:headerContent>
+    <semantic:positiveAction>
+        <semantic:PositiveAction text="Add Activity" press=".onPressOpenActivityCreateDialog"/>
+    </semantic:positiveAction>
+    <!-- 
+   <semantic:negativeAction>
+        <semantic:NegativeAction text="{i18n>TablePorductsUnlist}" press=".onUnlistObjects"/>
+    </semantic:negativeAction>
+-->
+</semantic:SemanticPage>
+</mvc:View>

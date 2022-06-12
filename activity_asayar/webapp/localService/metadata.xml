@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="ZASAYAR_AKTIVITE_PROJE_SRV" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <Annotation Term="Core.SchemaVersion" String="1.0.0" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+            <EntityType Name="User" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Mandt"/>
+                    <PropertyRef Name="Userid"/>
+                </Key>
+                <Property Name="Mandt" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Client" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Userid" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="User Id" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Username" Type="Edm.String" Nullable="false" MaxLength="45" sap:unicode="false" sap:label="User Name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="UserToAktiviteNav" Relationship="ZASAYAR_AKTIVITE_PROJE_SRV.AssUserToAktivite" FromRole="FromRole_AssUserToAktivite" ToRole="ToRole_AssUserToAktivite"/>
+            </EntityType>
+            <EntityType Name="Aktivite" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Mandt"/>
+                    <PropertyRef Name="Activityid"/>
+                </Key>
+                <Property Name="Mandt" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Client" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Userid" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="User Id" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Activityid" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:label="Activity Id" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Activityname" Type="Edm.String" Nullable="false" MaxLength="60" sap:unicode="false" sap:label="Activity Name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Activitydescription" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Activity Description" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Activitydate" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Activity Date" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Activitytime" Type="Edm.Decimal" Nullable="false" Precision="7" Scale="3" sap:unicode="false" sap:label="Activity Time" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <Association Name="AssUserToAktivite" sap:content-version="1">
+                <End Type="ZASAYAR_AKTIVITE_PROJE_SRV.User" Multiplicity="0..1" Role="FromRole_AssUserToAktivite"/>
+                <End Type="ZASAYAR_AKTIVITE_PROJE_SRV.Aktivite" Multiplicity="*" Role="ToRole_AssUserToAktivite"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_AssUserToAktivite">
+                        <PropertyRef Name="Mandt"/>
+                        <PropertyRef Name="Userid"/>
+                    </Principal>
+                    <Dependent Role="ToRole_AssUserToAktivite">
+                        <PropertyRef Name="Mandt"/>
+                        <PropertyRef Name="Userid"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <EntityContainer Name="ZASAYAR_AKTIVITE_PROJE_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="UserSet" EntityType="ZASAYAR_AKTIVITE_PROJE_SRV.User" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="AktiviteSet" EntityType="ZASAYAR_AKTIVITE_PROJE_SRV.Aktivite" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <AssociationSet Name="AssUserToAktiviteSet" Association="ZASAYAR_AKTIVITE_PROJE_SRV.AssUserToAktivite" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="UserSet" Role="FromRole_AssUserToAktivite"/>
+                    <End EntitySet="AktiviteSet" Role="ToRole_AssUserToAktivite"/>
+                </AssociationSet>
+            </EntityContainer>
+            <atom:link rel="self" href="http://10.34.68.52:8030/sap/opu/odata/sap/ZASAYAR_AKTIVITE_PROJE_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="http://10.34.68.52:8030/sap/opu/odata/sap/ZASAYAR_AKTIVITE_PROJE_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

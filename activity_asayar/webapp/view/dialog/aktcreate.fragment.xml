@@ -1,0 +1,41 @@
+<c:FragmentDefinition xmlns="sap.m" xmlns:c="sap.ui.core" xmlns:f="sap.ui.layout.form">
+
+    <Dialog id="fragment01" title="Baslik">
+        <VBox>
+            <VBox>
+
+                <Label text="User Id:" class="sapUiSmallMarginBegin"></Label>
+                <Input value="{aktiviteCreate>/userId}" class="sapUiSmallMarginBegin"></Input>
+
+                <Label text="Ativity Id:" class="sapUiSmallMarginBegin"></Label>
+                <Input value="{aktiviteCreate>/activityId}" class="sapUiSmallMarginBegin"></Input>
+
+                <Label text="Ativity Name:" class="sapUiSmallMarginBegin"></Label>
+                <Input value="{aktiviteCreate>/activityName}" class="sapUiSmallMarginBegin"></Input>
+
+                <Label text="Ativity Description:" class="sapUiSmallMarginBegin"></Label>
+                <Input value="{aktiviteCreate>/activityDescription}" class="sapUiSmallMarginBegin"></Input>
+
+                <Label text="Ativity Time:" class="sapUiSmallMarginBegin"></Label>
+                <Input value="{aktiviteCreate>/activityTime}" class="sapUiSmallMarginBegin"></Input>
+
+                <!-- 
+                <Label text="Ativity Date:" class="sapUiSmallMarginBegin"></Label>
+                <Input value="{aktiviteCreate>/activityDate}" class="sapUiSmallMarginBegin"></Input>
+
+               -->
+
+
+                <Panel id="dataBindingDateTimePanel" headerText="DateTimePicker using data binding" width="auto">
+                    <Label text="DateTimePicker using DataBinding" labelFor="DTP5" />
+                    <DateTimePicker id="DTP5" value="{aktiviteCreate>/activityDate}" class="sapUiSmallMarginBottom" />
+                    <Text id="textResultForDataBinding" text="{path:'/dateValue', type:'sap.ui.model.type.DateTime', formatOptions: { style: 'long'}}" class="sapUiSmallMargin" />
+                </Panel>
+
+                <Button text="Add New Activity" press=".onCreateAktivite" type="Accept" class="sapUiSmallMarginBegin"></Button>
+            </VBox>
+
+            <Button text="close" press="onCrtAkctClose" type="Reject" class="sapUiSmallMarginBegin"></Button>
+        </VBox>
+    </Dialog>
+</c:FragmentDefinition>

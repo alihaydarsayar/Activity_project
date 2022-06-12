@@ -1,0 +1,17 @@
+<c:FragmentDefinition xmlns="sap.m" xmlns:c="sap.ui.core" xmlns:f="sap.ui.layout.form">
+
+    <Dialog id="fragment0" title="Baslik">
+        <VBox>
+            <VBox>
+
+                <Label text="User Name:" class="sapUiSmallMarginBegin"></Label>
+                <Input value="{userCreate>/userName}" class="sapUiSmallMarginBegin"></Input>
+                <Label text="User Id:" class="sapUiSmallMarginBegin"></Label>
+                <Input value="{userCreate>/userId}" class="sapUiSmallMarginBegin"></Input>
+                <Button text="Add New User" press=".onCreateUser" type="Accept" class="sapUiSmallMarginBegin"></Button>
+            </VBox>
+
+            <Button text="close" press="onUserClose" type="Reject" class="sapUiSmallMarginBegin"></Button>
+        </VBox>
+    </Dialog>
+</c:FragmentDefinition>
