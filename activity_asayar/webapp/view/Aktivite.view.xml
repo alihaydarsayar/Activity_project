@@ -84,10 +84,10 @@
     <semantic:positiveAction>
         <semantic:PositiveAction text="Add Activity" press=".onPressOpenActivityCreateDialog"/>
     </semantic:positiveAction>
-    <!-- 
+   
    <semantic:negativeAction>
-        <semantic:NegativeAction text="{i18n>TablePorductsUnlist}" press=".onUnlistObjects"/>
+        <semantic:NegativeAction text="{i18n>BackToUserlist}" press=".onNavBack"/>
     </semantic:negativeAction>
--->
+
 </semantic:SemanticPage>
 </mvc:View>

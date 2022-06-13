@@ -82,37 +82,7 @@ sap.ui.define([
                 );
             },
             onPressOpenActivityUpdateDialog: function (oEvent) {
-                //
-
-
-                /*
-                
-                var that = this;
-                this.oDataModel = this.getOwnerComponent().getModel();
-                var oModel = new JSONModel({
-                    activityId: "",
-                    activityName: "",
-                    activityDescription: "",
-                    activityTime: "",
-                   //activityDate: "",
-                    userId: ""
-                });
-                this.getView().setModel(oModel, "aktiviteeModel");
-                
-                var oDataModel = this.getView().getModel();
-                
-                oDataModel.read("/AktiviteSet('00022')", {
-                    method: "GET",
-                    success: function (oData) {
-                        MessageBox.success("İşlemi Başarılı");
-                    },
-                    error: function (oError) {
-                        MessageBox.error(" İşlemi Başarısız");
-                    }
-                });
-                
-                */
-                //
+             
                 var oView = this.getView();
 
                 if (!this._pDialog) {
@@ -129,17 +99,6 @@ sap.ui.define([
                         oDialog.open();
                     }.bind(this)
                 );
-
-                /*
-                this.oMyFirstDialog.then(function(oDialog) {
-                    const oModel = new JSONModel({
-                       
-                    });
-                    oDialog.setModel(oModel, "aktiviteeModel");
-                    oDialog.open();
-                    });
-                
-                */
 
             },
             onCreateAktivite: function () {
@@ -169,47 +128,55 @@ sap.ui.define([
                 //               oDataModel.setRefreshAfterChange(true);
             },
             onUpdate: function (oEvent) {
-               // var contextPath = oEvent.getSource().getBindingContextPath();
-                
-                var id= oEvent.getSource().getProperty("description").split(" ")[2];
-                
-                //var id = this.getView().getModel("aktiviteModel").getProperty(contextPath).Activityid;
-                console.log(id);
+              /*
+                var updateAktiviteModel = new JSONModel({
+                    activityId: "",
+                    activityName: "",
+                    activityDescription: "",
+                    activityTime: "",
+                    activityDate: "",
+                    userId: ""
+                });
+                this.getView().setModel(updateAktiviteModel, "aktiviteModel");
+*/
 
-                var oEntry = {
-                    "Activityid": YYY,
-                    "Activityname": yeniKitapText,
-                    "Activitydescription": yeniKitapText,
-                    "Activitytime": yeniKitapText,
-                    "Activitydate": yeniKitapText,
-                    "Userid": yeniKitapText
-                };
+                var oEntry = {};
+                var aktiviteModel = this.getView().getModel("aktiviteModel");
+                oEntry.Activityname = aktiviteModel.getData().activityName;
+                oEntry.Activitydescription = aktiviteModel.getData().activityDescription;
+                oEntry.Activityid = aktiviteModel.getData().activityId;
+                oEntry.Activitytime = aktiviteModel.getData().activityTime;
+                oEntry.Activitydate = new Date(aktiviteModel.getData().activityDate);
+                oEntry.Userid = aktiviteModel.getData().userId;
+
+             console.log(oEntry.Activitytime);
 
                 var oDataModel = this.getView().getModel();
 
-                oDataModel.update("/AktiviteSet(" + id + ")", oEntry, {
-                    method: "PUT",
+                oDataModel.update("/AktiviteSet('"+oEntry.Activityid+"')", oEntry, {
                     success: function (oData, oResponse) {
                         MessageBox.success("Güncelleme İşlemi Başarılı");
+                     
                     },
                     error: function (oError) {
                         MessageBox.error("Güncelleme İşlemi Başarısız");
                     }
                 });
 
-
             },
             onCrtAkctClose: function () {
                 this.byId('fragment01').close();
-
+                location.reload();
             },
 
             onUpdAkctClose: function () {
                 this.byId('fragment02').close();
+                location.reload();
             },
 
             onNavBack: function () {
                 this.getOwnerComponent().getRouter().navTo("RouteMainView");
+                location.reload();
             },
 
         });
