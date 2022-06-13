@@ -5,19 +5,15 @@
                 <Page id="page" title="{i18n>title}">
                     <content>
                         <List id="_IDGenList1" items="{mainModel>/UserList}" mode="Delete" delete="onPressDeleteUser" headerText="Users">
-                            <StandardListItem id="_IDGenStandardListItem1" title="{mainModel>Username}" type="Navigation"  press="onPress" description="User ID: {mainModel>Userid}" />
+                            <StandardListItem id="_IDGenStandardListItem1" title="{mainModel>Username}" type="Navigation" press="onPress" description="User ID: {mainModel>Userid}" />
                         </List>
-                        <VBox id="_IDGenVBox2">
-                            <Button id="_IDGenButton1" text="Yeni Kullanıcı Ekle" width="230px" press=".onPressOpenUserDialog" />
-                        </VBox>
                     </content>
-                </Page>
-                <Page id="page1" title="{i18n>title1}">
-                    <content>
-                       <VBox id="_IDGenVBox1" >
-                        <Button id="_IDGenButton2" text="Yeni Kullanıcı Ekle" width="230px" press=".onPressOpenUserDialog" />
-                       </VBox>
-                    </content>
+                    <footer>
+                        <Toolbar>
+                            <ToolbarSpacer />
+                            <Button id="_IDGenButton1" text="Yeni Kullanıcı Ekle" width="230px" press=".onPressOpenUserDialog" type="Accept" />
+                        </Toolbar>
+                    </footer>
                 </Page>
             </pages>
         </App>

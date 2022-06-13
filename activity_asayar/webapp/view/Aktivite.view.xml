@@ -82,7 +82,7 @@
         </IconTabBar>
     </semantic:headerContent>
     <semantic:positiveAction>
-        <semantic:PositiveAction text="Add Activity" press=".onPressOpenActivityCreateDialog"/>
+        <semantic:PositiveAction text="Add New Activity" press=".onPressOpenActivityCreateDialog"/>
     </semantic:positiveAction>
    
    <semantic:negativeAction>

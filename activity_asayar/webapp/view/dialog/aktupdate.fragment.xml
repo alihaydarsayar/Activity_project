@@ -1,9 +1,8 @@
 <c:FragmentDefinition xmlns="sap.m" xmlns:c="sap.ui.core" xmlns:f="sap.ui.layout.form">
 
-    <Dialog id="fragment02" title="Baslik">
+    <Dialog id="fragment02" title="Update Activity">
         <VBox>
             <VBox>
-
                 <Label id="user0" text="User Id:" class="sapUiSmallMarginBegin"></Label>
                 <Input value="{aktiviteModel>/userId}" class="sapUiSmallMarginBegin"></Input>
 
@@ -15,23 +14,21 @@
                
                 <Label id="user3" text="Ativity Description:" class="sapUiSmallMarginBegin"></Label>
                 <Input value="{aktiviteModel>/activityDescription}" class="sapUiSmallMarginBegin"></Input>
-
                 
                 <Label id="user4" text="Ativity Time:" class="sapUiSmallMarginBegin"></Label>
                 <Input value="{aktiviteModel>/activityTime}" class="sapUiSmallMarginBegin"></Input>
-              
-              
-             
-                <Panel id="DateTimePanel" headerText="" width="auto">
+
+                <Panel id="DateTimePanel" headerText="" width="auto" >
                     <Label text="Ativity Date:" labelFor="DTP5" />
                     <DateTimePicker id="DTP5" value="{aktiviteModel>/activityDate}" class="sapUiSmallMarginBottom" />
                     <Text id="textResultForDataBinding" text="" class="sapUiSmallMargin" />
                 </Panel>
-               
-                <Button text="Update Activity" press=".onUpdate" type="Accept" class="sapUiSmallMarginBegin"></Button>
             </VBox>
-
-            <Button text="close" press="onUpdAkctClose" type="Reject" class="sapUiSmallMarginBegin"></Button>
         </VBox>
+        <Toolbar>
+            <ToolbarSpacer />
+            <Button text="Update Activity" press=".onUpdate" type="Accept" class="sapUiSmallMarginBegin" />
+            <Button text="close" press="onUpdAkctClose" type="Reject" class="sapUiSmallMarginBegin" />
+        </Toolbar>
     </Dialog>
 </c:FragmentDefinition>

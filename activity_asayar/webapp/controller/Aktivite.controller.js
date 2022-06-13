@@ -61,7 +61,7 @@ sap.ui.define([
                     error: function (oError) {
                         MessageBox.error("Silme İşlemi Başarısız");
                     }
-                });
+                });   location.reload();
             },
             onPressOpenActivityCreateDialog: function () {
                 var oView = this.getView();
@@ -82,7 +82,7 @@ sap.ui.define([
                 );
             },
             onPressOpenActivityUpdateDialog: function (oEvent) {
-             
+
                 var oView = this.getView();
 
                 if (!this._pDialog) {
@@ -128,17 +128,17 @@ sap.ui.define([
                 //               oDataModel.setRefreshAfterChange(true);
             },
             onUpdate: function (oEvent) {
-              /*
-                var updateAktiviteModel = new JSONModel({
-                    activityId: "",
-                    activityName: "",
-                    activityDescription: "",
-                    activityTime: "",
-                    activityDate: "",
-                    userId: ""
-                });
-                this.getView().setModel(updateAktiviteModel, "aktiviteModel");
-*/
+                /*
+                  var updateAktiviteModel = new JSONModel({
+                      activityId: "",
+                      activityName: "",
+                      activityDescription: "",
+                      activityTime: "",
+                      activityDate: "",
+                      userId: ""
+                  });
+                  this.getView().setModel(updateAktiviteModel, "aktiviteModel");
+  */
 
                 var oEntry = {};
                 var aktiviteModel = this.getView().getModel("aktiviteModel");
@@ -149,14 +149,16 @@ sap.ui.define([
                 oEntry.Activitydate = new Date(aktiviteModel.getData().activityDate);
                 oEntry.Userid = aktiviteModel.getData().userId;
 
-             console.log(oEntry.Activitytime);
+                console.log(oEntry.Activityid);
 
                 var oDataModel = this.getView().getModel();
 
-                oDataModel.update("/AktiviteSet('"+oEntry.Activityid+"')", oEntry, {
+                oDataModel.update("/AktiviteSet('" + oEntry.Activityid + "')", oEntry, {
                     success: function (oData, oResponse) {
+                        
                         MessageBox.success("Güncelleme İşlemi Başarılı");
-                     
+
+
                     },
                     error: function (oError) {
                         MessageBox.error("Güncelleme İşlemi Başarısız");
