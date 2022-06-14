@@ -1,34 +1,36 @@
 <c:FragmentDefinition xmlns="sap.m" xmlns:c="sap.ui.core" xmlns:f="sap.ui.layout.form">
 
     <Dialog id="fragment01" title="Add New Activity">
-        <VBox>
-            <VBox>
-                <Label text="User Id:" class="sapUiSmallMarginBegin" required="true" ></Label>
-                <Input value="{aktiviteCreate>/userId}" class="sapUiSmallMarginBegin" required="true"></Input>
+        <f:SimpleForm editable="false" layout="ResponsiveGridLayout" singleContainerFullSize="false">
+            <f:content>
+                <Label text="User Id:" required="true"></Label>
+                <Input value="{aktiviteCreate>/userId}" required="true"></Input>
+                <!-- 
+                <Label text="Ativity Id:" ></Label>
+                <Input value="{aktiviteCreate>/activityId}" ></Input>
+-->
+                <Label text="Ativity Name:"></Label>
+                <Input value="{aktiviteCreate>/activityName}"></Input>
 
-                <Label text="Ativity Id:" class="sapUiSmallMarginBegin"></Label>
-                <Input value="{aktiviteCreate>/activityId}" class="sapUiSmallMarginBegin"></Input>
+                <Label text="Ativity Description:"></Label>
+                <Input value="{aktiviteCreate>/activityDescription}"></Input>
 
-                <Label text="Ativity Name:" class="sapUiSmallMarginBegin"></Label>
-                <Input value="{aktiviteCreate>/activityName}" class="sapUiSmallMarginBegin"></Input>
+                <Label text="Ativity Time:"></Label>
+                <Input value="{aktiviteCreate>/activityTime}"></Input>
 
-                <Label text="Ativity Description:" class="sapUiSmallMarginBegin"></Label>
-                <Input value="{aktiviteCreate>/activityDescription}" class="sapUiSmallMarginBegin"></Input>
 
-                <Label text="Ativity Time:" class="sapUiSmallMarginBegin"></Label>
-                <Input value="{aktiviteCreate>/activityTime}" class="sapUiSmallMarginBegin"></Input>
+                <Label text="Ativity Date:" labelFor="DTP5" />
+                <DateTimePicker id="DTP5" value="{aktiviteCreate>/activityDate}" />
+                <Text id="textResultForDataBinding" text="{path:'/dateValue', type:'sap.ui.model.type.DateTime', formatOptions: { style: 'long'}}" />
 
-                <Panel id="dataBindingDateTimePanel" width="auto">
-                    <Label text="Ativity Date:" labelFor="DTP5" />
-                    <DateTimePicker id="DTP5" value="{aktiviteCreate>/activityDate}" class="sapUiSmallMarginBottom" />
-                    <Text id="textResultForDataBinding" text="{path:'/dateValue', type:'sap.ui.model.type.DateTime', formatOptions: { style: 'long'}}" class="sapUiSmallMargin" />
-                </Panel>
-            </VBox>
-        </VBox>
-        <Toolbar>
-            <ToolbarSpacer />
-            <Button text="Add New Activity" press=".onCreateAktivite" type="Accept" class="sapUiSmallMarginBegin" />
-            <Button text="close" press="onCrtAkctClose" type="Reject" class="sapUiSmallMarginBegin" />
-        </Toolbar>
+            </f:content>
+
+            <f:content>
+                <Button text="Add New Activity" press=".onCreateAktivite" type="Accept" />
+                <Button text="Close" press="onCrtAkctClose" type="Reject" />
+            </f:content>
+
+        </f:SimpleForm>
+
     </Dialog>
 </c:FragmentDefinition>

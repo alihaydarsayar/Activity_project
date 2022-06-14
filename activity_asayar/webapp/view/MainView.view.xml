@@ -4,7 +4,7 @@
             <pages>
                 <Page id="page" title="{i18n>title}">
                     <content>
-                        <List id="_IDGenList1" items="{mainModel>/UserList}" mode="Delete" delete="onPressDeleteUser" headerText="Users">
+                        <List id="_IDGenList1" items="{mainModel>/UserList}" mode="Delete" delete="onPressDeleteUser" headerText="">
                             <StandardListItem id="_IDGenStandardListItem1" title="{mainModel>Username}" type="Navigation" press="onPress" description="User ID: {mainModel>Userid}" />
                         </List>
                     </content>

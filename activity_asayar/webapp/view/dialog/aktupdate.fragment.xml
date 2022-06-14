@@ -1,34 +1,34 @@
 <c:FragmentDefinition xmlns="sap.m" xmlns:c="sap.ui.core" xmlns:f="sap.ui.layout.form">
 
     <Dialog id="fragment02" title="Update Activity">
-        <VBox>
-            <VBox>
-                <Label id="user0" text="User Id:" class="sapUiSmallMarginBegin"></Label>
-                <Input value="{aktiviteModel>/userId}" class="sapUiSmallMarginBegin"></Input>
+        <f:SimpleForm editable="false" layout="ResponsiveGridLayout" singleContainerFullSize="false">
+            <f:content>
+                <Label id="user0" text="UserId" ></Label>
+                <Input value="{aktiviteModel>/userId}" ></Input>
 
-                <Label id="user1" text="Ativity Id:" class="sapUiSmallMarginBegin"></Label>
-                <Input value="{aktiviteModel>/activityId}" class="sapUiSmallMarginBegin"></Input>
-                
-                <Label id="user2" text="Ativity Name:" class="sapUiSmallMarginBegin"></Label>
-                <Input value="{aktiviteModel>/activityName}" class="sapUiSmallMarginBegin"></Input>
-               
-                <Label id="user3" text="Ativity Description:" class="sapUiSmallMarginBegin"></Label>
-                <Input value="{aktiviteModel>/activityDescription}" class="sapUiSmallMarginBegin"></Input>
-                
-                <Label id="user4" text="Ativity Time:" class="sapUiSmallMarginBegin"></Label>
-                <Input value="{aktiviteModel>/activityTime}" class="sapUiSmallMarginBegin"></Input>
+                <Label id="user1" text="Ativity Id:" ></Label>
+                <Input value="{aktiviteModel>/activityId}" ></Input>
 
-                <Panel id="DateTimePanel" headerText="" width="auto" >
-                    <Label text="Ativity Date:" labelFor="DTP5" />
-                    <DateTimePicker id="DTP5" value="{aktiviteModel>/activityDate}" class="sapUiSmallMarginBottom" />
-                    <Text id="textResultForDataBinding" text="" class="sapUiSmallMargin" />
-                </Panel>
-            </VBox>
-        </VBox>
-        <Toolbar>
-            <ToolbarSpacer />
-            <Button text="Update Activity" press=".onUpdate" type="Accept" class="sapUiSmallMarginBegin" />
-            <Button text="close" press="onUpdAkctClose" type="Reject" class="sapUiSmallMarginBegin" />
-        </Toolbar>
+                <Label id="user2" text="Ativity Name:" ></Label>
+                <Input value="{aktiviteModel>/activityName}" ></Input>
+
+                <Label id="user3" text="Ativity Description:" ></Label>
+                <Input value="{aktiviteModel>/activityDescription}" ></Input>
+
+                <Label id="user4" text="Ativity Time:" ></Label>
+                <Input value="{aktiviteModel>/activityTime}" ></Input>
+
+
+                <Label text="Ativity Date:" labelFor="DTP5" />
+                <DateTimePicker id="DTP5" value="{aktiviteModel>/activityDate}"  />
+                <Text id="textResultForDataBinding" text=""  />
+            </f:content>
+
+            <f:content>
+                <Button text="Update Activity" press=".onUpdate" type="Accept"  />
+                <Button text="close" press="onUpdAkctClose" type="Reject"  />
+            </f:content>
+
+        </f:SimpleForm>
     </Dialog>
 </c:FragmentDefinition>

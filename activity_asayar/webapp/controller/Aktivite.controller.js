@@ -61,7 +61,7 @@ sap.ui.define([
                     error: function (oError) {
                         MessageBox.error("Silme İşlemi Başarısız");
                     }
-                });   location.reload();
+                }); location.reload();
             },
             onPressOpenActivityCreateDialog: function () {
                 var oView = this.getView();
@@ -83,8 +83,26 @@ sap.ui.define([
             },
             onPressOpenActivityUpdateDialog: function (oEvent) {
 
+                var oItem = oEvent.getSource();
                 var oView = this.getView();
+                var oDataModel = this.getOwnerComponent().getModel();
+                var oModel = new JSONModel();
+                this.getView().setModel(oModel, "aktivite1Model");
 
+
+                oDataModel.read("/AktiviteSet('" + "01222" + "')", {
+                    method: "GET",
+                    success: function (oData) {
+                      // this.getView().getModel("aktiviteModel").setProperty("/Aktivite", oData.results);
+                        console.log(oData);
+                        console.log(oEvent, oItem);
+                    },
+                    error: function (oError) { }
+                });
+
+
+                //
+/*
                 if (!this._pDialog) {
                     this._pDialog = this.loadFragment({
                         name: 'as.activity.activityasayar.view.dialog.aktupdate'
@@ -99,14 +117,14 @@ sap.ui.define([
                         oDialog.open();
                     }.bind(this)
                 );
-
+*/
             },
             onCreateAktivite: function () {
                 var oEntry = {};
                 var aktiviteModel = this.getView().getModel("aktiviteCreate");
                 oEntry.Activityname = aktiviteModel.getData().activityName;
                 oEntry.Activitydescription = aktiviteModel.getData().activityDescription;
-                oEntry.Activityid = aktiviteModel.getData().activityId;
+                oEntry.Activityid = String(Math.floor(Math.random() * 99999));
                 oEntry.Activitytime = aktiviteModel.getData().activityTime;
                 oEntry.Activitydate = new Date(aktiviteModel.getData().activityDate);
                 oEntry.Userid = aktiviteModel.getData().userId;
@@ -118,28 +136,17 @@ sap.ui.define([
                 oDataModel.create("/AktiviteSet", oEntry, {
                     success: function (oData, oResponse) {
                         MessageBox.success("Kayıt İşlemi Başarılı");
-                        /// buraya yazılmalı        oDataModel.refresh(true)
-                        //oDataModel.setRefreshAfterChange(true);
+                        // oDataModel.refresh(true)
+                        // oDataModel.setRefreshAfterChange(true);
                     },
                     error: function (oError) {
                         MessageBox.error("Kayıt İşlemi Başarısız");
                     }
                 });
                 //               oDataModel.setRefreshAfterChange(true);
+                location.reload();
             },
             onUpdate: function (oEvent) {
-                /*
-                  var updateAktiviteModel = new JSONModel({
-                      activityId: "",
-                      activityName: "",
-                      activityDescription: "",
-                      activityTime: "",
-                      activityDate: "",
-                      userId: ""
-                  });
-                  this.getView().setModel(updateAktiviteModel, "aktiviteModel");
-  */
-
                 var oEntry = {};
                 var aktiviteModel = this.getView().getModel("aktiviteModel");
                 oEntry.Activityname = aktiviteModel.getData().activityName;
@@ -155,7 +162,7 @@ sap.ui.define([
 
                 oDataModel.update("/AktiviteSet('" + oEntry.Activityid + "')", oEntry, {
                     success: function (oData, oResponse) {
-                        
+
                         MessageBox.success("Güncelleme İşlemi Başarılı");
 
 
@@ -168,7 +175,7 @@ sap.ui.define([
             },
             onCrtAkctClose: function () {
                 this.byId('fragment01').close();
-                location.reload();
+               // location.reload();
             },
 
             onUpdAkctClose: function () {
