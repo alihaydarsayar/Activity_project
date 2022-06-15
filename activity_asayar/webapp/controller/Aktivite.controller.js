@@ -82,27 +82,42 @@ sap.ui.define([
                 );
             },
             onPressOpenActivityUpdateDialog: function (oEvent) {
+                //  var oSelectedItem = oEvent.getSource().getBindingContext('aktiviteModel').getObject();
+                var activityId = oEvent.getSource().getBindingContext('aktiviteModel').getObject("Activityid");
 
+                var oBindingContext = oEvent.getSource().getBindingContext('aktiviteModel');
+                //console.log(oSelectedItem, oBindingContext);
+                console.log(activityId);
                 var oItem = oEvent.getSource();
                 var oView = this.getView();
                 var oDataModel = this.getOwnerComponent().getModel();
                 var oModel = new JSONModel();
-                this.getView().setModel(oModel, "aktivite1Model");
+                this.getView().setModel(oModel, "aktiviteModel");
 
-
-                oDataModel.read("/AktiviteSet('" + "01222" + "')", {
+                oDataModel.read("/AktiviteSet('" + activityId + "')", {
                     method: "GET",
                     success: function (oData) {
-                      // this.getView().getModel("aktiviteModel").setProperty("/Aktivite", oData.results);
-                        console.log(oData);
-                        console.log(oEvent, oItem);
+                        // this.getView().getModel("aktiviteModel").setProperty("/Aktivite", oData.results);
+                        //  console.log(oEvent, oItem,oData);
+                        // console.log(oDataModel);
+
+                        var oModel3 = new JSONModel({
+                            Userid: oData.Userid,
+                            Activityid: oData.Activityid,
+                            Activityname: oData.Activityname,
+                            Activitytime: oData.Activitytime,
+                            Activitydate: oData.Activitydate,
+                            Activitydescription: oData.Activitydescription
+                        });
+
+                        oModel.setData(oData);
+                        oView.setModel(oModel, "aktiviteModel");
+                        console.log(oModel);
+                        console.log(oModel3);
                     },
                     error: function (oError) { }
                 });
-
-
                 //
-/*
                 if (!this._pDialog) {
                     this._pDialog = this.loadFragment({
                         name: 'as.activity.activityasayar.view.dialog.aktupdate'
@@ -113,11 +128,10 @@ sap.ui.define([
                 }
                 this._pDialog.then(
                     function (oDialog) {
-                        //               oDialog.setModel(oModel, "aktiviteeModel");
+                        oDialog.setModel(oModel, "aktiviteModel");   // 
                         oDialog.open();
                     }.bind(this)
                 );
-*/
             },
             onCreateAktivite: function () {
                 var oEntry = {};
@@ -130,7 +144,6 @@ sap.ui.define([
                 oEntry.Userid = aktiviteModel.getData().userId;
 
                 //console.log(oEntry.Activitydate);
-
                 var oDataModel = this.getView().getModel();
 
                 oDataModel.create("/AktiviteSet", oEntry, {
@@ -149,23 +162,18 @@ sap.ui.define([
             onUpdate: function (oEvent) {
                 var oEntry = {};
                 var aktiviteModel = this.getView().getModel("aktiviteModel");
-                oEntry.Activityname = aktiviteModel.getData().activityName;
-                oEntry.Activitydescription = aktiviteModel.getData().activityDescription;
-                oEntry.Activityid = aktiviteModel.getData().activityId;
-                oEntry.Activitytime = aktiviteModel.getData().activityTime;
-                oEntry.Activitydate = new Date(aktiviteModel.getData().activityDate);
-                oEntry.Userid = aktiviteModel.getData().userId;
+                oEntry.Activityname = aktiviteModel.getData().Activityname;
+                oEntry.Activitydescription = aktiviteModel.getData().Activitydescription;
+                oEntry.Activityid = aktiviteModel.getData().Activityid;
+                oEntry.Activitytime = aktiviteModel.getData().Activitytime;
+                oEntry.Activitydate = new Date(aktiviteModel.getData().Activitydate);
+                oEntry.Userid = aktiviteModel.getData().Userid;
 
                 console.log(oEntry.Activityid);
-
                 var oDataModel = this.getView().getModel();
-
                 oDataModel.update("/AktiviteSet('" + oEntry.Activityid + "')", oEntry, {
                     success: function (oData, oResponse) {
-
                         MessageBox.success("Güncelleme İşlemi Başarılı");
-
-
                     },
                     error: function (oError) {
                         MessageBox.error("Güncelleme İşlemi Başarısız");
@@ -175,14 +183,12 @@ sap.ui.define([
             },
             onCrtAkctClose: function () {
                 this.byId('fragment01').close();
-               // location.reload();
+                // location.reload();
             },
-
             onUpdAkctClose: function () {
                 this.byId('fragment02').close();
                 location.reload();
             },
-
             onNavBack: function () {
                 this.getOwnerComponent().getRouter().navTo("RouteMainView");
                 location.reload();

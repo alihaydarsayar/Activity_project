@@ -4,23 +4,23 @@
         <f:SimpleForm editable="false" layout="ResponsiveGridLayout" singleContainerFullSize="false">
             <f:content>
                 <Label id="user0" text="UserId" ></Label>
-                <Input value="{aktiviteModel>/userId}" ></Input>
+                <Input value="{aktiviteModel>/Userid}" editable="false" ></Input>
 
                 <Label id="user1" text="Ativity Id:" ></Label>
-                <Input value="{aktiviteModel>/activityId}" ></Input>
+                <Input value="{aktiviteModel>/Activityid}" ></Input>
 
                 <Label id="user2" text="Ativity Name:" ></Label>
-                <Input value="{aktiviteModel>/activityName}" ></Input>
+                <Input value="{aktiviteModel>/Activityname}"  ></Input>
 
                 <Label id="user3" text="Ativity Description:" ></Label>
-                <Input value="{aktiviteModel>/activityDescription}" ></Input>
+                <Input value="{aktiviteModel>/Activitydescription}" ></Input>
 
                 <Label id="user4" text="Ativity Time:" ></Label>
-                <Input value="{aktiviteModel>/activityTime}" ></Input>
+                <Input value="{aktiviteModel>/Activitytime}" ></Input>
 
 
                 <Label text="Ativity Date:" labelFor="DTP5" />
-                <DateTimePicker id="DTP5" value="{aktiviteModel>/activityDate}"  />
+                <DateTimePicker id="DTP5" value="{aktiviteModel>/Activitydate}"  />
                 <Text id="textResultForDataBinding" text=""  />
             </f:content>
 

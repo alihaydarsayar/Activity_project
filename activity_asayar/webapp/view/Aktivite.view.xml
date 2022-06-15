@@ -10,8 +10,8 @@
             <IconTabBar id="iconTabBar" select=".onQuickFilter" expandable="false">
 
                 <content>
-                    <Table id="table" growing="true" growingScrollToLoad="true"  width="auto" mode="Delete" delete="onDelete" items="{aktiviteModel>/AktiviteList}">
-                       <!-- 
+                    <Table id="table" growing="true" growingScrollToLoad="true" width="auto" mode="Delete" delete="onDelete" items="{aktiviteModel>/AktiviteList}">
+                        <!-- 
                         <headerToolbar>
                             <Toolbar>
                                 <Title id="tableHeader" text="{i18n>titleactivity}" />
@@ -42,9 +42,6 @@
                             <Column id="unitsInStockColumn1" hAlign="End">
                                 <Text text="User ID" />
                             </Column>
-                            <Column id="icon" hAlign="End">
-                                <Text text="Edit" />
-                            </Column>
                         </columns>
                         <items>
                             <ColumnListItem type="Navigation" press=".onPressOpenActivityUpdateDialog">
@@ -55,7 +52,6 @@
                                     <Label text="{aktiviteModel>Activitytime}"></Label>
                                     <Label text="{aktiviteModel>Activitydate}"></Label>
                                     <Label text="{aktiviteModel>Userid}"></Label>
-                                    <core:Icon src="sap-icon://edit" class="IconStyle" press="onIconPress" />
                                 </cells>
                             </ColumnListItem>
                         </items>
