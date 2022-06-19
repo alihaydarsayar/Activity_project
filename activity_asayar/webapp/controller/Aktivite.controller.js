@@ -63,9 +63,9 @@ sap.ui.define([
                     }
                 }); location.reload();
             },
-            onPressOpenActivityCreateDialog: function () {
+            onPressOpenActivityCreateDialog: function (oEvent) {
                 var oView = this.getView();
-
+               
                 if (!this._pDialog) {
                     this._pDialog = this.loadFragment({
                         name: 'as.activity.activityasayar.view.dialog.aktcreate'

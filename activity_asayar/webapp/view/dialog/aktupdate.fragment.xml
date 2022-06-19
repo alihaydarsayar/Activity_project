@@ -7,7 +7,7 @@
                 <Input value="{aktiviteModel>/Userid}" editable="false" ></Input>
 
                 <Label id="user1" text="Ativity Id:" ></Label>
-                <Input value="{aktiviteModel>/Activityid}" ></Input>
+                <Input value="{aktiviteModel>/Activityid}" editable="false"  ></Input>
 
                 <Label id="user2" text="Ativity Name:" ></Label>
                 <Input value="{aktiviteModel>/Activityname}"  ></Input>
