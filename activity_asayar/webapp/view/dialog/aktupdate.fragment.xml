@@ -6,20 +6,20 @@
                 <Label id="user0" text="UserId" ></Label>
                 <Input value="{aktiviteModel>/Userid}" editable="false" ></Input>
 
-                <Label id="user1" text="Ativity Id:" ></Label>
+                <Label id="user1" text="Activity Id" ></Label>
                 <Input value="{aktiviteModel>/Activityid}" editable="false"  ></Input>
 
-                <Label id="user2" text="Ativity Name:" ></Label>
+                <Label id="user2" text="Activity Name" ></Label>
                 <Input value="{aktiviteModel>/Activityname}"  ></Input>
 
-                <Label id="user3" text="Ativity Description:" ></Label>
+                <Label id="user3" text="Activity Description" ></Label>
                 <Input value="{aktiviteModel>/Activitydescription}" ></Input>
 
-                <Label id="user4" text="Ativity Time:" ></Label>
+                <Label id="user4" text="Activity Time" ></Label>
                 <Input value="{aktiviteModel>/Activitytime}" ></Input>
 
 
-                <Label text="Ativity Date:" labelFor="DTP5" />
+                <Label text="Activity Date" labelFor="DTP5" />
                 <DateTimePicker id="DTP5" value="{aktiviteModel>/Activitydate}"  />
                 <Text id="textResultForDataBinding" text=""  />
             </f:content>

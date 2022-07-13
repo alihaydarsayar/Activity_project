@@ -3,23 +3,23 @@
     <Dialog id="fragment01" title="Add New Activity">
         <f:SimpleForm editable="false" layout="ResponsiveGridLayout" singleContainerFullSize="false">
             <f:content>
-                <Label text="User Id:" required="true"></Label>
+                <Label text="User Id" required="true"></Label>
                 <Input value="{aktiviteCreate>/userId}" required="true"></Input>
                 <!-- 
                 <Label text="Ativity Id:" ></Label>
                 <Input value="{aktiviteCreate>/activityId}" ></Input>
 -->
-                <Label text="Ativity Name:"></Label>
+                <Label text="Activity Name"></Label>
                 <Input value="{aktiviteCreate>/activityName}"></Input>
 
-                <Label text="Ativity Description:"></Label>
+                <Label text="Activity Description"></Label>
                 <Input value="{aktiviteCreate>/activityDescription}"></Input>
 
-                <Label text="Ativity Time:"></Label>
+                <Label text="Activity Time"></Label>
                 <Input value="{aktiviteCreate>/activityTime}"></Input>
 
 
-                <Label text="Ativity Date:" labelFor="DTP5" />
+                <Label text="Activity Date" labelFor="DTP5" />
                 <DateTimePicker id="DTP5" value="{aktiviteCreate>/activityDate}" />
                 <Text id="textResultForDataBinding" text="{path:'/dateValue', type:'sap.ui.model.type.DateTime', formatOptions: { style: 'long'}}" />
 
