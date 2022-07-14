@@ -183,7 +183,7 @@ sap.ui.define([
             },
             onCrtAkctClose: function () {
                 this.byId('fragment01').close();
-                // location.reload();
+                 location.reload();
             },
             onUpdAkctClose: function () {
                 this.byId('fragment02').close();
