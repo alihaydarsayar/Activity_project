@@ -50,7 +50,14 @@
                                     <Text text="{aktiviteModel>Activitydescription}" />
                                     <Label text="{aktiviteModel>Activityid}"></Label>
                                     <Label text="{aktiviteModel>Activitytime}"></Label>
-                                    <Label text="{aktiviteModel>Activitydate}"></Label>
+                                    <!-- <Label text="{aktiviteModel>Activitydate}"></Label> -->
+                                    <!-- <Label text="{path:'aktiviteModel>Activitydate',
+                                        formatter:'.formatter.oDateFormat'}"></Label> -->
+                                    <Label text="{path:'aktiviteModel>Activitydate',
+                                        type: 'sap.ui.model.type.Date',  
+                                        formatOptions: {
+                                         pattern: 'dd.MM.yyyy'  
+                                        }}"></Label>
                                     <Label text="{aktiviteModel>Userid}"></Label>
                                 </cells>
                             </ColumnListItem>
