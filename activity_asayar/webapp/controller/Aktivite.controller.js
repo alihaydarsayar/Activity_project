@@ -6,11 +6,13 @@ sap.ui.define([
     "sap/m/Button",
     "sap/m/library",
     "sap/m/List",
+    "sap/ui/model/Filter",
+	"sap/ui/model/FilterOperator"
 ],
     /**
      * @param {typeof sap.ui.core.mvc.Controller} Controller
      */
-    function (Controller, JSONModel, MessageBox, Dialog, List, Button) {
+    function (Controller, JSONModel, MessageBox, Dialog, List, Button, Filter, FilterOperator) {
         "use strict";
 
 
@@ -36,7 +38,7 @@ sap.ui.define([
                     activityDescription: "",
                     activityTime: "",
                     activityDate: "",
-                    userId: ""
+                    userId: userId
                 });
                 this.getView().setModel(createAktiviteModel, "aktiviteCreate");
                 //
@@ -56,16 +58,18 @@ sap.ui.define([
                 var oDataModel = this.getView().getModel();
                 oDataModel.remove("/AktiviteSet('" + id + "')", {
                     success: function (oData) {
-                        MessageBox.success("Silme İşlemi Başarılı");
+                        // MessageBox.success("Silme İşlemi Başarılı");
                     },
                     error: function (oError) {
                         MessageBox.error("Silme İşlemi Başarısız");
                     }
-                }); location.reload();
+                });
+                //location.reload();
+                oDataModel.refresh();
             },
             onPressOpenActivityCreateDialog: function (oEvent) {
                 var oView = this.getView();
-               
+
                 if (!this._pDialog) {
                     this._pDialog = this.loadFragment({
                         name: 'as.activity.activityasayar.view.dialog.aktcreate'
@@ -181,9 +185,21 @@ sap.ui.define([
                 });
 
             },
+            onSearch: function () {
+                var aFilter = [];
+                var sQuery = oEvent.getParameter("query");
+			if (sQuery) {
+				aFilter.push(new Filter("Title", FilterOperator.Contains, sQuery));
+			}
+
+			// filter binding
+			var oTable = this.byId("table");
+			var oBinding = oTable.getBinding("items");
+			oBinding.filter(aFilter);
+            },
             onCrtAkctClose: function () {
                 this.byId('fragment01').close();
-                 location.reload();
+                location.reload();
             },
             onUpdAkctClose: function () {
                 this.byId('fragment02').close();
@@ -192,7 +208,7 @@ sap.ui.define([
             onNavBack: function () {
                 this.getOwnerComponent().getRouter().navTo("RouteMainView");
                 location.reload();
-            },
+            }
 
         });
     });

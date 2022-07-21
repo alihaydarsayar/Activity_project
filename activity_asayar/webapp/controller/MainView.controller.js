@@ -53,13 +53,14 @@ sap.ui.define([
                     success: function (oData, oResponse) {
                         MessageBox.success("Silme İşlemi Başarılı");
                         // this.getView().getModel("mainModel").refresh(true);
+                       // location.reload();
                         
                     },
                     error: function (oError) {
                         MessageBox.error("Silme İşlemi Başarısız");
                     }
                 });
-                location.reload();
+               location.reload();
             } /* */,
             onPressOpenUserDialog: function () {
                 var oView = this.getView();

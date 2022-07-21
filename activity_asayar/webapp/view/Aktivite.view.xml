@@ -3,26 +3,19 @@
 
         <semantic:titleHeading>
             <Title text="{i18n>activitylistTitle}" />
-
         </semantic:titleHeading>
 
         <semantic:headerContent>
             <IconTabBar id="iconTabBar" select=".onQuickFilter" expandable="false">
-
                 <content>
                     <Table id="table" growing="true" growingScrollToLoad="true" width="auto" mode="Delete" delete="onDelete" items="{aktiviteModel>/AktiviteList}">
-                        <!-- 
                         <headerToolbar>
                             <Toolbar>
-                                <Title id="tableHeader" text="{i18n>titleactivity}" />
+                                <Title id="tableHeader" text="{aktiviteModel>/Activityname}" />
                                 <ToolbarSpacer />
-                                
-                   
-                                <Label text="{aktiviteModel>/Activityid}"></Label>
-                                <Title text="{aktiviteModel>/Activityid}" />
+                                <SearchField id="searchField" tooltip="{i18n>worklistSearchTooltip}" search=".onSearch" width="auto"></SearchField>
                             </Toolbar>
                         </headerToolbar>
--->
                         <columns>
                             <Column id="nameColumn">
                                 <Text id="nameColumnTitle" text="Activity Name" />
