@@ -17,14 +17,11 @@
                             </Toolbar>
                         </headerToolbar>
                         <columns>
-                            <Column id="nameColumn">
+                            <Column id="nameColumn" >
                                 <Text id="nameColumnTitle" text="Activity Name" />
                             </Column>
                             <Column id="supplierNameColumn" demandPopin="false" minScreenWidth="Tablet">
                                 <Text text="Activity Description" />
-                            </Column>
-                            <Column id="unitPriceColumn" hAlign="Begin" demandPopin="true">
-                                <Text text="Activity Id" />
                             </Column>
                             <Column id="unitsOnOrderColumn" demandPopin="true" minScreenWidth="Tablet" hAlign="Begin">
                                 <Text text="Activity Time" />
@@ -32,7 +29,10 @@
                             <Column id="unitsInStockColumn" hAlign="Begin">
                                 <Text text="Activity Date" />
                             </Column>
-                            <Column id="unitsInStockColumn1" hAlign="End">
+                            <Column id="unitPriceColumn" width="100px" hAlign="Begin" demandPopin="true">
+                                <Text text="Activity Id" />
+                            </Column>
+                            <Column id="unitsInStockColumn1" width="100px"  hAlign="Begin">
                                 <Text text="User ID" />
                             </Column>
                         </columns>
@@ -41,7 +41,7 @@
                                 <cells>
                                     <ObjectIdentifier title="{aktiviteModel>Activityname}" />
                                     <Text text="{aktiviteModel>Activitydescription}" />
-                                    <Label text="{aktiviteModel>Activityid}"></Label>
+
                                     <Label text="{aktiviteModel>Activitytime}"></Label>
                                     <!-- <Label text="{aktiviteModel>Activitydate}"></Label> -->
                                     <!-- <Label text="{path:'aktiviteModel>Activitydate',
@@ -51,6 +51,7 @@
                                         formatOptions: {
                                          pattern: 'dd.MM.yyyy'  
                                         }}"></Label>
+                                    <Label text="{aktiviteModel>Activityid}"></Label>
                                     <Label text="{aktiviteModel>Userid}"></Label>
                                 </cells>
                             </ColumnListItem>

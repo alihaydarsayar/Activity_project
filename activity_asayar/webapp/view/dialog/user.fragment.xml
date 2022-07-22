@@ -1,16 +1,20 @@
 <c:FragmentDefinition xmlns="sap.m" xmlns:c="sap.ui.core" xmlns:f="sap.ui.layout.form">
 
-    <Dialog id="fragment0" title="Add New User">
-        <VBox>
-            <Label text="User Name:" class="sapUiSmallMarginBegin"></Label>
-            <Input value="{userCreate>/userName}" class="sapUiSmallMarginBegin"></Input>
-            <Label text="User Id:" class="sapUiSmallMarginBegin"></Label>
-            <Input value="{userCreate>/userId}" class="sapUiSmallMarginBegin"></Input>
-        </VBox>
+    <Dialog id="fragment0" title="Add New User" icon="sap-icon://add-employee">
+        <f:SimpleForm editable="false" layout="ResponsiveGridLayout" singleContainerFullSize="false">
+    <f:content>
+            <Label text="User Name:" ></Label>
+            <Input value="{userCreate>/userName}" ></Input>
+            <Label text="User Id:" ></Label>
+            <Input value="{userCreate>/userId}" ></Input>
+    </f:content>
+        <f:content>
         <Toolbar>
             <ToolbarSpacer />
-            <Button text="Add New User" press=".onCreateUser" type="Accept" class="sapUiSmallMarginBegin" />
-            <Button text="close" press="onUserClose" type="Reject" class="sapUiSmallMarginBegin" />
+            <Button text="Add New User" icon="sap-icon://add-employee"  press=".onCreateUser" type="Accept"  />
+            <Button text="close" press="onUserClose" type="Reject"  />
         </Toolbar>
+    </f:content>
+</f:SimpleForm>
     </Dialog>
 </c:FragmentDefinition>
