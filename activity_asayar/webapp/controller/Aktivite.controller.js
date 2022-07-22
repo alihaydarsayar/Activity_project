@@ -7,12 +7,13 @@ sap.ui.define([
     "sap/m/library",
     "sap/m/List",
     "sap/ui/model/Filter",
-	"sap/ui/model/FilterOperator"
+    "sap/ui/model/FilterOperator",
+    "sap/ui/model/FilterType"
 ],
     /**
      * @param {typeof sap.ui.core.mvc.Controller} Controller
      */
-    function (Controller, JSONModel, MessageBox, Dialog, List, Button, Filter, FilterOperator) {
+    function (Controller, JSONModel, MessageBox, Dialog, Button, library, List, Filter, FilterOperator, FilterType) {
         "use strict";
 
 
@@ -185,17 +186,22 @@ sap.ui.define([
                 });
 
             },
-            onSearch: function () {
-                var aFilter = [];
-                var sQuery = oEvent.getParameter("query");
-			if (sQuery) {
-				aFilter.push(new Filter("Title", FilterOperator.Contains, sQuery));
-			}
+            onSearch: function (oEvent) {
+                var oTableSearchState = [],
+                    sQuery = oEvent.getParameter("query");
+                if (sQuery && sQuery.length > 0) {
+                    // oTableSearchState = [new Filter("Activityname", FilterOperator.Contains, sQuery)]; // tek filter
 
-			// filter binding
-			var oTable = this.byId("table");
-			var oBinding = oTable.getBinding("items");
-			oBinding.filter(aFilter);
+                    oTableSearchState = new Filter({
+                        filters: [
+                            new Filter("Activityname", FilterOperator.Contains, sQuery),
+                            new Filter("Activityid", FilterOperator.Contains, sQuery)
+                        ],
+                       // and: false
+                    });
+                }
+                this.getView().byId("table").getBinding("items").filter(oTableSearchState, "Application");
+
             },
             onCrtAkctClose: function () {
                 this.byId('fragment01').close();

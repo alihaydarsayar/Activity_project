@@ -8,17 +8,19 @@
         <semantic:headerContent>
             <IconTabBar id="iconTabBar" select=".onQuickFilter" expandable="false">
                 <content>
-                    <Table id="table" growing="true" growingScrollToLoad="true" width="auto" mode="Delete" delete="onDelete" items="{aktiviteModel>/AktiviteList}">
+                    <Table id="table" growing="true" growingScrollToLoad="true" width="auto" mode="Delete" delete="onDelete" 
+                    items="{
+                        path:'aktiviteModel>/AktiviteList'}">
                         <headerToolbar>
                             <Toolbar>
-                                <Title id="tableHeader" text="{aktiviteModel>/Activityname}" />
+                                <Title id="tableHeader" text="" />
                                 <ToolbarSpacer />
-                                <SearchField id="searchField" tooltip="{i18n>worklistSearchTooltip}" search=".onSearch" width="auto"></SearchField>
+                                <SearchField tooltip="{i18n>worklistSearchTooltip}" search=".onSearch" width="auto"></SearchField>
                             </Toolbar>
                         </headerToolbar>
                         <columns>
                             <Column id="nameColumn" >
-                                <Text id="nameColumnTitle" text="Activity Name" />
+                                <Text text="Activity Name" />
                             </Column>
                             <Column id="supplierNameColumn" demandPopin="false" minScreenWidth="Tablet">
                                 <Text text="Activity Description" />
@@ -37,9 +39,9 @@
                             </Column>
                         </columns>
                         <items>
-                            <ColumnListItem type="Navigation" press=".onPressOpenActivityUpdateDialog">
+                            <ColumnListItem id="id1" type="Navigation" press=".onPressOpenActivityUpdateDialog">
                                 <cells>
-                                    <ObjectIdentifier title="{aktiviteModel>Activityname}" />
+                                    <ObjectIdentifier title="{aktiviteModel>Activityname}" id="Name"/>
                                     <Text text="{aktiviteModel>Activitydescription}" />
 
                                     <Label text="{aktiviteModel>Activitytime}"></Label>
